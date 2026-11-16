@@ -1,0 +1,293 @@
+{
+  "construction_notes": "Semantic repair of three coupled defects plus one integrity rule. First, the label no longer thresholds EndofExtent: the publisher records that column as a spatial extent offset (EndOfExtentType is a location type, and posting rows contain values such as -119.48 and 2446 that are coordinates, not days). The duration is now the whole-calendar-day difference between DateofAdvisory and DateOpened, matching the dictionary definition of DURATION CALCULATED, and the build cross-checks the computed difference against the publisher duration column within one day and fails if the agreement share falls below 0.90. Second, the time anchor is now DateofAdvisory (the issue date) in alias order, so DateOpened is used only as the removal date; the check asserts the first resolved start column normalizes to the advisory-date field. Third, splits, embargo, prior posting counts, days since prior posting and the prior duration rate are all rebuilt from the corrected issue date. The prior duration rate uses only training-split records whose recorded removal date is strictly before the scored issue date and before 2016-01-01, with a reported worst-case gap (removal date minus scored issue date, required to be at most minus one day) so matured holdout labels can never enter. Fourth, the plan's own uniqueness invariant is now implemented: rows sharing beach key, issue date and class are collapsed deterministically to the earliest source row before any window or embargo filter, the removed count and the number of duplicate groups with differing durations are recorded, and a post-dedup duplicate count of zero is asserted; prior counts are computed on the deduplicated history. Permanent postings could not be excluded as a separate class because the observed AdvisoryType values carry only posting, closure, rain and null, so the population wording was corrected to say so instead of claiming an exclusion the source cannot express, and the limitation is recorded. The population, seven-day threshold, feature list, split windows and embargo width are otherwise unchanged. Historical field availability remains unverified, and references stays null because the removal date is the label source, not an independent persistence reference.",
+  "quality": {
+    "carry_columns": [],
+    "evaluation_contract": {
+      "access": "isolated_rows",
+      "cross_row_audit": {
+        "auxiliary_files_review": "No auxiliary files; only public/train.csv, public/eval.csv and private/holdout.csv are written.",
+        "probes": [],
+        "rationale": "Prior posting counts use only earlier issue dates. The prior duration rate uses only training-split records whose recorded removal date is strictly before the scored issue date and before 2016-01-01, so eval and holdout labels never enter, including matured earlier holdout labels that would otherwise expose a later private target."
+      },
+      "feature_evidence": {
+        "advisory_class": {
+          "availability": "AdvisoryType on the current-snapshot advisory record; population restricted to the posting class.",
+          "source": "https://publish.data.ca.gov/dataset/beach-water-quality-postings-and-closures",
+          "status": "assumed"
+        },
+        "advisory_id": {
+          "availability": "Constructed stable advisory identifier from beach key, issue date, duration and class in the current snapshot; historical availability assumed.",
+          "source": "https://publish.data.ca.gov/dataset/beach-water-quality-postings-and-closures",
+          "status": "assumed"
+        },
+        "advisory_start_date": {
+          "availability": "DateofAdvisory issue date on the current-snapshot advisory record; historical availability assumed.",
+          "source": "https://publish.data.ca.gov/dataset/beach-water-quality-postings-and-closures",
+          "status": "assumed"
+        },
+        "beach_id": {
+          "availability": "Constructed from source beach identity fields in the current snapshot; historical availability assumed.",
+          "source": "https://publish.data.ca.gov/dataset/beach-water-quality-postings-and-closures",
+          "status": "assumed"
+        },
+        "county": {
+          "availability": "Advisory county with station-inventory fallback in the current snapshot; historical availability assumed.",
+          "source": "https://publish.data.ca.gov/dataset/b9c8ce91-40ff-4ad3-8164-bc17c46afb44/resource/98e628ff-d012-4982-ad32-b9f9ad8ab524/download/beach-monitoring-stations.csv",
+          "status": "assumed"
+        },
+        "days_since_prior_posting": {
+          "availability": "Constructed from earlier issue dates in the current snapshot; historical availability assumed.",
+          "source": "https://publish.data.ca.gov/dataset/beach-water-quality-postings-and-closures",
+          "status": "assumed"
+        },
+        "latitude": {
+          "availability": "Joined from the station inventory or advisory record in the current snapshot; historical availability assumed.",
+          "source": "https://publish.data.ca.gov/dataset/b9c8ce91-40ff-4ad3-8164-bc17c46afb44/resource/98e628ff-d012-4982-ad32-b9f9ad8ab524/download/beach-monitoring-stations.csv",
+          "status": "assumed"
+        },
+        "longitude": {
+          "availability": "Joined from the station inventory or advisory record in the current snapshot; historical availability assumed.",
+          "source": "https://publish.data.ca.gov/dataset/b9c8ce91-40ff-4ad3-8164-bc17c46afb44/resource/98e628ff-d012-4982-ad32-b9f9ad8ab524/download/beach-monitoring-stations.csv",
+          "status": "assumed"
+        },
+        "monitoring_agency": {
+          "availability": "Joined from the station inventory or advisory record in the current snapshot; historical availability assumed.",
+          "source": "https://publish.data.ca.gov/dataset/b9c8ce91-40ff-4ad3-8164-bc17c46afb44/resource/98e628ff-d012-4982-ad32-b9f9ad8ab524/download/beach-monitoring-stations.csv",
+          "status": "assumed"
+        },
+        "prior_mean_closed_duration_days_365d": {
+          "availability": "Constructed causally from training-split records whose recorded removal date is strictly before the scored issue date and before 2016-01-01 in the current snapshot; historical availability assumed.",
+          "source": "https://publish.data.ca.gov/dataset/beach-water-quality-postings-and-closures",
+          "status": "assumed"
+        },
+        "prior_postings_365d": {
+          "availability": "Constructed from earlier issue dates in the deduplicated posting history in the current snapshot; historical availability assumed.",
+          "source": "https://publish.data.ca.gov/dataset/beach-water-quality-postings-and-closures",
+          "status": "assumed"
+        },
+        "start_day_of_week": {
+          "availability": "Derived from the DateofAdvisory issue date in the current snapshot; historical availability assumed.",
+          "source": "https://publish.data.ca.gov/dataset/beach-water-quality-postings-and-closures",
+          "status": "assumed"
+        },
+        "start_month": {
+          "availability": "Derived from the DateofAdvisory issue date in the current snapshot; historical availability assumed.",
+          "source": "https://publish.data.ca.gov/dataset/beach-water-quality-postings-and-closures",
+          "status": "assumed"
+        },
+        "station_count": {
+          "availability": "Joined from the station inventory in the current snapshot; historical availability assumed.",
+          "source": "https://publish.data.ca.gov/dataset/b9c8ce91-40ff-4ad3-8164-bc17c46afb44/resource/98e628ff-d012-4982-ad32-b9f9ad8ab524/download/beach-monitoring-stations.csv",
+          "status": "assumed"
+        }
+      },
+      "limitations": [
+        "Current-vintage retrospective file: removal dates reflect later edits and the extract was refreshed in 2026, so this shows what a model can learn from the register, not that the seven-day outcome was known to an operator at issuance.",
+        "No full-row availability ledger was observed; exact header spellings, date fill rates and historical field availability remain assumed and are confirmed or refuted by the builder checks at run time.",
+        "AdvisoryType does not expose a separable permanent-posting code in the observed publisher data, so permanent postings folded into the posting class cannot be removed by class alone; the population wording was corrected rather than pretending an unobservable exclusion.",
+        "Repeated rows sharing a beach, issue date and class are removed deterministically by keeping the earliest source row; where a duplicate group carries differing removal dates the retained label is one of several recorded outcomes.",
+        "Station matching uses an identifier tier, a beach-name-plus-county tier and a beach-name-only tier, so same-named beaches in different jurisdictions can over-merge and inflate station counts.",
+        "Duration is a whole-calendar-day difference, so a posting whose removal date equals the issue date plus exactly seven days counts as persistent; sub-day timing is not representable.",
+        "No rainfall, tide, oceanographic or sampling-result covariates are used; weather is a major driver of posting persistence, so the model is limited to register-available fields.",
+        "Reporting is by county health officers with heterogeneous protocols, so county and beach effects partly encode administrative practice rather than environmental persistence.",
+        "The seven-day threshold is a policy choice, not a natural break; sensitivity to three and fourteen days is not evaluated here.",
+        "Beaches outside participating jurisdictions and episodes never entered into the state register are absent, so the population is the reporting frame, not all California beaches."
+      ],
+      "selection": {
+        "evidence": "Row issue date (DateofAdvisory), pre-issuance beach identity, county, station inventory and earlier posting issue dates; the recorded removal date (DateOpened), the publisher duration column and the spatial extent fields are withheld and are never features.",
+        "kind": "prediction_time"
+      },
+      "training_label_timing": "unverified",
+      "use": "retrospective_research",
+      "vintage": {
+        "evidence": "Current publisher snapshot; historical revision state and exact refresh date are not verified in this write-only construction.",
+        "kind": "current_snapshot"
+      }
+    },
+    "event_key_column": "advisory_start_date",
+    "expected_duplicate_ids": 0,
+    "external_threshold": {
+      "source": "Frozen task definition of at least seven whole calendar days from the advisory issue date to the recorded removal date; not selected or tuned on eval or holdout.",
+      "unit": "days",
+      "value": 7
+    },
+    "features": [
+      "advisory_class",
+      "start_month",
+      "start_day_of_week",
+      "county",
+      "beach_id",
+      "prior_postings_365d",
+      "prior_mean_closed_duration_days_365d",
+      "days_since_prior_posting",
+      "station_count",
+      "latitude",
+      "longitude",
+      "monitoring_agency"
+    ],
+    "features_documented_at": "prediction_time",
+    "high_cardinality_columns": [
+      "advisory_start_date",
+      "beach_id",
+      "prior_mean_closed_duration_days_365d"
+    ],
+    "id_columns": [
+      "advisory_id"
+    ],
+    "label_source_columns": [
+      "DateofAdvisory",
+      "DateOpened",
+      "DURATION CALCULATED"
+    ],
+    "measurements": [
+      {
+        "column": "DURATION CALCULATED",
+        "frame": "Whole calendar days from the advisory issue date to the advisory removal date, as defined by the publisher data dictionary and cross-checked against the date difference.",
+        "unit": "days"
+      }
+    ],
+    "name": "ca-beach-advisory-duration",
+    "positive_label": 1,
+    "post_hoc_columns": [
+      "EndofExtent",
+      "DURATION CALCULATED",
+      "duration_days",
+      "DateOpened"
+    ],
+    "split_windows": {
+      "eval": {
+        "end": "2020-01-01T00:00:00.000",
+        "start": "2016-01-01T00:00:00.000"
+      },
+      "holdout": {
+        "end": "2024-01-01T00:00:00.000",
+        "start": "2020-01-01T00:00:00.000"
+      },
+      "train": {
+        "end": "2016-01-01T00:00:00.000",
+        "start": "2005-01-01T00:00:00.000"
+      }
+    },
+    "splits": {
+      "eval": "public/eval.csv",
+      "holdout": "private/holdout.csv",
+      "train": "public/train.csv"
+    },
+    "target": "persists_7d",
+    "task": {
+      "decision_user": "County environmental-health and beach-program staff and the state beach monitoring program deciding, on the day a posting is issued, whether to schedule repeat sampling, extra signage and staffing, and extended public messaging.",
+      "features": [
+        {
+          "availability": "Recorded on the advisory record at issuance in the current snapshot; historical availability assumed.",
+          "evidence_url": "https://publish.data.ca.gov/dataset/beach-water-quality-postings-and-closures",
+          "meaning": "Advisory class; the population is restricted to the posting class, so this column is constant posting after filtering. It records the declared population control. AdvisoryType in the observed publisher data carries posting, closure, rain and null values; a permanent posting is not a separable code, so it remains inside the posting class and is recorded as a limitation.",
+          "name": "advisory_class"
+        },
+        {
+          "availability": "Derived from the DateofAdvisory issue date in the current snapshot; historical availability assumed.",
+          "evidence_url": "https://publish.data.ca.gov/dataset/beach-water-quality-postings-and-closures",
+          "meaning": "Calendar month of the advisory issue date, known at day 0 and capturing seasonality in dry-weather runoff and sampling.",
+          "name": "start_month"
+        },
+        {
+          "availability": "Derived from the DateofAdvisory issue date in the current snapshot; historical availability assumed.",
+          "evidence_url": "https://publish.data.ca.gov/dataset/beach-water-quality-postings-and-closures",
+          "meaning": "Day of week of the advisory issue date, known at day 0 and capturing weekday sampling and staffing patterns.",
+          "name": "start_day_of_week"
+        },
+        {
+          "availability": "Advisory county with station-inventory fallback in the current snapshot; historical availability assumed.",
+          "evidence_url": "https://publish.data.ca.gov/dataset/b9c8ce91-40ff-4ad3-8164-bc17c46afb44/resource/98e628ff-d012-4982-ad32-b9f9ad8ab524/download/beach-monitoring-stations.csv",
+          "meaning": "County or jurisdiction of the advisory or joined station, proxying local re-sampling protocol and signage practice. Missing values are the explicit UNKNOWN category, not zero.",
+          "name": "county"
+        },
+        {
+          "availability": "Constructed from source beach identity fields in the current snapshot; historical availability assumed.",
+          "evidence_url": "https://publish.data.ca.gov/dataset/beach-water-quality-postings-and-closures",
+          "meaning": "Stable hashed beach key built from the source beach identifier or beach name plus county; it is not the advisory row identifier.",
+          "name": "beach_id"
+        },
+        {
+          "availability": "Constructed from earlier issue dates in the deduplicated posting history in the current snapshot; historical availability assumed.",
+          "evidence_url": "https://publish.data.ca.gov/dataset/beach-water-quality-postings-and-closures",
+          "meaning": "Count of earlier posting issue dates for the same beach in the trailing 365 days, strictly before the current issue date, computed on the deduplicated history; known at day 0 and not a label-derived rate.",
+          "name": "prior_postings_365d"
+        },
+        {
+          "availability": "Constructed causally from training labels whose recorded removal date closed before the scored issue date and before 2016-01-01 in the current snapshot; historical availability assumed.",
+          "evidence_url": "https://publish.data.ca.gov/dataset/beach-water-quality-postings-and-closures",
+          "meaning": "Mean recorded duration of earlier same-beach training postings whose recorded removal date is strictly before the scored issue date and whose issue date is in the trailing 365 days. Only training-split labels removed before 2016-01-01 are used, so eval and holdout labels never enter. Missingness is retained when no qualifying training record exists.",
+          "name": "prior_mean_closed_duration_days_365d"
+        },
+        {
+          "availability": "Constructed from earlier issue dates in the current snapshot; historical availability assumed.",
+          "evidence_url": "https://publish.data.ca.gov/dataset/beach-water-quality-postings-and-closures",
+          "meaning": "Days since the most recent earlier posting issue date for the same beach, or missing if none; known at day 0.",
+          "name": "days_since_prior_posting"
+        },
+        {
+          "availability": "Joined from the station inventory in the current snapshot; historical availability assumed.",
+          "evidence_url": "https://publish.data.ca.gov/dataset/b9c8ce91-40ff-4ad3-8164-bc17c46afb44/resource/98e628ff-d012-4982-ad32-b9f9ad8ab524/download/beach-monitoring-stations.csv",
+          "meaning": "Number of station-inventory rows joined to the beach; missing when no station match, not zero.",
+          "name": "station_count"
+        },
+        {
+          "availability": "Joined from the station inventory or advisory record in the current snapshot; historical availability assumed.",
+          "evidence_url": "https://publish.data.ca.gov/dataset/b9c8ce91-40ff-4ad3-8164-bc17c46afb44/resource/98e628ff-d012-4982-ad32-b9f9ad8ab524/download/beach-monitoring-stations.csv",
+          "meaning": "Mean station latitude for the beach, falling back to the advisory coordinate; missing when unavailable.",
+          "name": "latitude"
+        },
+        {
+          "availability": "Joined from the station inventory or advisory record in the current snapshot; historical availability assumed.",
+          "evidence_url": "https://publish.data.ca.gov/dataset/b9c8ce91-40ff-4ad3-8164-bc17c46afb44/resource/98e628ff-d012-4982-ad32-b9f9ad8ab524/download/beach-monitoring-stations.csv",
+          "meaning": "Mean station longitude for the beach, falling back to the advisory coordinate; missing when unavailable.",
+          "name": "longitude"
+        },
+        {
+          "availability": "Joined from the station inventory or advisory record in the current snapshot; historical availability assumed.",
+          "evidence_url": "https://publish.data.ca.gov/dataset/b9c8ce91-40ff-4ad3-8164-bc17c46afb44/resource/98e628ff-d012-4982-ad32-b9f9ad8ab524/download/beach-monitoring-stations.csv",
+          "meaning": "Station or advisory monitoring agency; UNKNOWN when missing, not zero.",
+          "name": "monitoring_agency"
+        }
+      ],
+      "outcome_horizon": "7 days from the advisory issue date.",
+      "population": "Advisory records in the beach-advisories CSV whose advisory class is the posting class; closure and rain advisory records are excluded and counted, and a permanent-posting value is not separable in the observed AdvisoryType data so permanent postings that the publisher folds into the posting class remain included and are recorded as a limitation. The issue date comes from DateofAdvisory and must fall from 2005-01-01 through 2023-12-31; the removal date comes from DateOpened and must be present and on or after the issue date so the whole-day duration is defined. Records sharing a beach, issue date and class are collapsed to the earliest source row so repeated episode rows do not repeat the label. Records starting in the seven days before 2016-01-01, 2020-01-01 or 2024-01-01 are dropped by the boundary embargo. Records with a missing or negative duration are excluded because the label cannot be computed; they are never treated as negative.",
+      "prediction_time": "The advisory issue date, day 0, taken from DateofAdvisory. Only the advisory class, issue date, beach identity, county, station inventory and earlier posting issue dates are used. For duration rates only earlier training-split records whose recorded removal date closed before this row and before 2016-01-01 are used. DateOpened, DURATION CALCULATED, the spatial extent fields and the derived duration are withheld.",
+      "question": "When a county health officer issues a new beach water-quality posting, will that posting remain in force for at least seven days?",
+      "simple_references": "Majority-class rate of the seven-day label; county-level historical posting persistence rate computed from training labels only for eval and holdout; beach-level historical mean duration computed from training labels whose removal dates closed before each scored row; calendar-only month and day-of-week control. The county and beach references are the meaningful baselines.",
+      "split_policy": "Chronological by advisory issue date, no random shuffling: train is 2005-01-01 through 2015-12-31, eval is 2016-01-01 through 2019-12-31, holdout is 2020-01-01 through 2023-12-31. These are fixed half-open intervals. Boundary embargo: any record whose issue date falls in the seven days before a split boundary is dropped. Training labels used for prior duration rates must be training-split records and must have a recorded removal date before the scored issue date and before 2016-01-01; eval and holdout labels are never used for rates. No fallback shift is applied.",
+      "target": "y = 1 if the advisory record is a posting and the recorded removal date is at least seven whole calendar days after the issue date; y = 0 if the recorded removal date is on or after the issue date and less than seven days later. Records with a missing removal date or a removal date before the issue date are excluded rather than labeled negative.",
+      "usefulness": "The seven-day persistence label is not a stored field; the recorded removal date and the publisher duration column are withheld and are unknown when the posting is issued. Persistence concentrates repeat sampling, signage, staffing and hotline burden. Beach, county and calendar base rates are strong but imperfect, so a model that beats them under heterogeneous county reporting is informative; the task is retrospective because the current extract contains later edits."
+    },
+    "threshold_seconds": 604800,
+    "time_column": "advisory_start_date",
+    "timing": {
+      "features": {
+        "period": null,
+        "published_days_after_period_end": null,
+        "source_kind": "administrative_record"
+      },
+      "observations": [],
+      "prediction_instant": {
+        "citation": "Advisory issue date from DateofAdvisory in the event-level register; no reporting period or historical publication lag is documented for these records.",
+        "days_after_period_end": null,
+        "kind": "event_time",
+        "period": null
+      },
+      "row_selection": {
+        "fields": [
+          "AdvisoryType",
+          "DateofAdvisory",
+          "DateOpened"
+        ],
+        "rule": "Select posting-class advisory episodes whose issue date parses into the 2005-2023 study period and whose recorded removal date is present and not before the issue date, collapse repeated beach-issue-date-class rows to the earliest source record, and exclude records starting in the seven-day split-boundary embargo. The removal date and the publisher duration column are used only to build the label and are withheld from features."
+      }
+    }
+  },
+  "references": {
+    "entity_columns": [],
+    "persistence_column": null,
+    "persistence_direction": 1
+  },
+  "source_access_recipe": "Use the two publisher CSV URLs already recorded and read each with pandas.read_csv and encoding utf-8-sig. In beach-advisories.csv, AdvisoryType is the advisory class and the population is the posting class only; closure and rain advisory records are counted and excluded, and a permanent-posting code is not separable in the observed data so such rows remain inside posting and must be described as a limitation rather than silently dropped. The time anchor is DateofAdvisory, the issue date; DateOpened is the removal date and must never be used as the start. Duration is the whole-calendar-day difference between DateOpened and DateofAdvisory, cross-checked against DURATION CALCULATED within one day. EndofExtent and the other extent fields are spatial coordinate offsets (EndOfExtentType is a location type) and must never be treated as a day duration; DURATION CALCULATED is the label source and is withheld from features together with DateOpened. Exclude records with a missing removal date or a removal date before the issue date instead of labeling them negative. Collapse records sharing beach key, issue date and class to the earliest source row before computing splits, embargo and prior counts, and compute prior counts on that deduplicated history. Build the beach key from BeachName_id when present, otherwise Beach_Name plus County, with a name-only fallback for the station join. Read beach-monitoring-stations.csv and join by station beach identifier, then beach name plus county, then beach name alone; aggregate station count, mean coordinates, first agency and first county, and keep unmatched rows missing rather than zero. Keep the posting-only population, the seven-day label and the 2005-01-01/2016-01-01/2020-01-01/2024-01-01 split boundaries unchanged, and build prior duration rates only from training-split records removed before the scored issue date and before 2016-01-01. Fail with observed headers, missing names, selected member and bounded sample evidence when a required field or join key is absent or the duration semantics cannot be established."
+}

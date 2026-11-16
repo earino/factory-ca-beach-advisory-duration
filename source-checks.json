@@ -1,0 +1,137 @@
+{
+  "checks": [
+    {
+      "check": "advisory source field mapping",
+      "observed": "class column 'AdvisoryType'; start candidates used ['DateofAdvisory']; end candidates used ['DateOpened']; beach id column 'BeachName_id'; beach name column 'Beach_Name'; advisory headers ['DURATION CALCULATED', 'Regional Board', 'Advisory id', 'HistoricalStationName', 'prefix', 'mile', 'DateofAdvisory', 'TimeofAdvisory', 'DateOpened', 'TimeOpened', 'AdvisoryType', 'AdvisoryCause', 'Description', 'Extent', 'StartofExtent', 'StartOfExtentType', 'EndofExtent', 'EndOfExtentType', 'Source', 'Advisory Comments', 'DescriptionofArea', 'ActionBy', 'AffectedLengthUnit', 'SubstanceName', 'SubstanceVolume', 'SubstanceUnit', 'AdditionalAction', 'ActionDate', 'ActionDescription', 'County', 'User_id', 'Enterococcus', 'Fecal Coliforms', 'Total Coliforms', 'E.Coli', 'Ratio', 'Advisory Record Create Date', 'Station_id', 'Station_Agency_id', 'BeachName_id', 'Station_Name', 'Station_Description', 'AgencyStationIdentifier', 'Station_UpperLat', 'Station_UpperLon', 'Station_LowerLat', 'Station_LowerLon', 'SwimSeason', 'OffSeason', 'AsNeededSeason', 'CountyCode', 'CountyName', 'Status', 'UpdateDate', 'Advisories Insert Date', 'pointZero', 'Datum', 'BeachProfileId', 'Beach_AgencyName', 'Beach_Name', 'BeachDescription', 'BeachType', 'Beach Length', 'AttendanceWinter', 'AttendanceSummer', 'NearestCityName', 'WaterBodyName', 'WaterBodyClass', 'AB411Beach', 'USEPAID', 'BeachAccess', 'SwimSeasonLength', 'WaterBodyType', 'WaterShedName', 'Beach_UpperLat', 'Beach_UpperLon', 'Beach_LowerLat', 'Beach_LowerLon', 'Beach_County', 'Beach_User_id', 'Beach_Status', 'CountAsBeach', 'Agency_id', 'Agency_Code', 'Agency_Name', 'Agency_Jurisdiction', 'StreetAddress', 'City', 'Advisories Contact Person', 'Zip', 'EstMonCost', 'EstCoastlineAdvisoryCost', 'EstTotalCost', 'Agency_Comments', 'Agency_County', 'Agency_User_id', 'Regional Board Number', 'Regional Board Name']; station headers ['Regional Board', 'Station_id', 'Station_Agency_id', 'BeachName_id', 'Station_Name', 'Station_Description', 'AgencyStationIdentifier', 'Station_UpperLat', 'Station_UpperLon', 'Station_LowerLat', 'Station_LowerLon', 'SwimSeason', 'OffSeason', 'AsNeededSeason', 'CountyCode', 'CountyName', 'Status', 'UpdateDate', 'Stations Insert Date', 'pointZero', 'Datum', 'Beach_AgencyName', 'Beach_Name', 'Description', 'BeachType', 'Beach Length', 'AttendanceWinter', 'AttendanceSummer', 'NearestCityName', 'WaterBodyName', 'WaterBodyClass', 'AB411Beach', 'USEPAID', 'BeachAccess', 'SwimSeasonLength', 'WaterBodyType', 'WaterShedName', 'Beach_UpperLat', 'Beach_UpperLon', 'Beach_LowerLat', 'Beach_LowerLon', 'Beach_County', 'Beach_User_id', 'Beach_Status', 'CountAsBeach', 'Agency_id', 'Agency_Code', 'Agency_Name', 'Agency_Jurisdiction', 'StreetAddress', 'City', 'Station Contact Person', 'Zip', 'EstMonCost', 'EstCoastlineAdvisoryCost', 'EstTotalCost', 'Station Comments', 'County', 'Agency_User_id', 'Regional Board Number', 'Regional Board Name', '_st_id_key', '_st_name_county_key', '_st_name_only_key', '_county_st', '_agency_st', '_lat_st', '_lon_st']",
+      "expected": "AdvisoryType gives the class, DateofAdvisory gives the issue date, DateOpened gives the removal date, and beach identity plus station inventory join fields are present",
+      "passed": true
+    },
+    {
+      "check": "advisory issue date field used",
+      "observed": "start candidates used ['DateofAdvisory']; null issue dates among posting rows 0; posting rows 32058",
+      "expected": "The time anchor is the advisory issue date column (DateofAdvisory), not the removal date column",
+      "passed": true
+    },
+    {
+      "check": "advisory removal date field used",
+      "observed": "end candidates used ['DateOpened']; null removal dates among posting rows 55; posting rows 32058",
+      "expected": "The advisory removal date column (DateOpened) supplies the end of the episode and is withheld from features",
+      "passed": true
+    },
+    {
+      "check": "spatial extent column excluded from duration",
+      "observed": "spatial columns seen ['EndofExtent', 'StartofExtent', 'EndOfExtentType']; sample {'EndofExtent': ['0.02840909', '0.07930909', '3.856409', '10.27081', '3.576109'], 'StartofExtent': ['-0.02840909', '0.02249091', '3.799591', '10.21399', '3.519291'], 'EndOfExtentType': ['Lat/Long']}; duration candidates used ['DURATION CALCULATED']; duration source is the removal date minus the issue date expressed in whole days",
+      "expected": "EndofExtent and related extent columns are spatial coordinate offsets (the publisher tags EndOfExtentType as a location type), so they must never be treated as day durations",
+      "passed": true
+    },
+    {
+      "check": "computed duration agrees with reported duration",
+      "observed": "reported duration candidates ['DURATION CALCULATED']; rows with both values 35243; agreeing within one day 35243; agreement share 1.0000; source headers ['DURATION CALCULATED', 'Regional Board', 'Advisory id', 'HistoricalStationName', 'prefix', 'mile', 'DateofAdvisory', 'TimeofAdvisory', 'DateOpened', 'TimeOpened', 'AdvisoryType', 'AdvisoryCause', 'Description', 'Extent', 'StartofExtent', 'StartOfExtentType', 'EndofExtent', 'EndOfExtentType', 'Source', 'Advisory Comments', 'DescriptionofArea', 'ActionBy', 'AffectedLengthUnit', 'SubstanceName', 'SubstanceVolume', 'SubstanceUnit', 'AdditionalAction', 'ActionDate', 'ActionDescription', 'County', 'User_id', 'Enterococcus', 'Fecal Coliforms', 'Total Coliforms', 'E.Coli', 'Ratio', 'Advisory Record Create Date', 'Station_id', 'Station_Agency_id', 'BeachName_id', 'Station_Name', 'Station_Description', 'AgencyStationIdentifier', 'Station_UpperLat', 'Station_UpperLon', 'Station_LowerLat', 'Station_LowerLon', 'SwimSeason', 'OffSeason', 'AsNeededSeason', 'CountyCode', 'CountyName', 'Status', 'UpdateDate', 'Advisories Insert Date', 'pointZero', 'Datum', 'BeachProfileId', 'Beach_AgencyName', 'Beach_Name', 'BeachDescription', 'BeachType', 'Beach Length', 'AttendanceWinter', 'AttendanceSummer', 'NearestCityName', 'WaterBodyName', 'WaterBodyClass', 'AB411Beach', 'USEPAID', 'BeachAccess', 'SwimSeasonLength', 'WaterBodyType', 'WaterShedName', 'Beach_UpperLat', 'Beach_UpperLon', 'Beach_LowerLat', 'Beach_LowerLon', 'Beach_County', 'Beach_User_id', 'Beach_Status', 'CountAsBeach', 'Agency_id', 'Agency_Code', 'Agency_Name', 'Agency_Jurisdiction', 'StreetAddress', 'City', 'Advisories Contact Person', 'Zip', 'EstMonCost', 'EstCoastlineAdvisoryCost', 'EstTotalCost', 'Agency_Comments', 'Agency_County', 'Agency_User_id', 'Regional Board Number', 'Regional Board Name']",
+      "expected": "The publisher duration column (DURATION CALCULATED) matches the removal date minus the issue date in whole calendar days for the large majority of rows",
+      "passed": true
+    },
+    {
+      "check": "label duration unit and seven-day threshold",
+      "observed": "rows 19061; min days 0.000000; max days 1934.000000; threshold days 7; threshold seconds 604800; duration frame is whole calendar days from issue date to removal date",
+      "expected": "Duration is the whole-calendar-day difference between the advisory issue date and the advisory removal date, and seven days equals 604800 seconds",
+      "passed": true,
+      "kind": "unit"
+    },
+    {
+      "check": "posting advisory class present",
+      "observed": "class counts {'Posting': 32058, 'Closure': 2057, 'Rain': 1623, '<NA>': 10}; posting rows 32058; rows whose class text mentions permanent 0",
+      "expected": "The posting class appears; closure, rain advisory and any permanent-tagged class are counted and excluded, and non-posting records are not required absent",
+      "passed": true
+    },
+    {
+      "check": "retained rows have coherent issue date and duration",
+      "observed": "posting rows 32058; missing issue date 0; missing removal date 55; missing duration 0; negative duration 12; outside window 8631; included 19061",
+      "expected": "Retained rows have a parsed issue date, a parsed removal date on or after the issue date, and a nonnegative whole-day duration; open and negative records are excluded",
+      "passed": true
+    },
+    {
+      "check": "duplicate beach-start-class rows removed",
+      "observed": "candidate posting rows 32058; distinct beach-start-class groups 26771; duplicate extra rows 5287; duplicate groups with differing durations 1053; remaining duplicates after keeping the first source record 0",
+      "expected": "At most one record per beach, issue date and advisory class survives, kept deterministically as the earliest source row, so prior counts are not inflated by repeated episode rows",
+      "passed": true
+    },
+    {
+      "check": "declared split windows populated",
+      "observed": "split counts {'train': 9942, 'holdout': 4769, 'eval': 4350}",
+      "expected": "Nonempty chronological train, eval and holdout windows",
+      "passed": true
+    },
+    {
+      "check": "positive labels present in every split",
+      "observed": "positive counts {'eval': 1690, 'holdout': 2053, 'train': 2814}",
+      "expected": "Each split contains at least one posting that stayed in force seven days or longer",
+      "passed": true
+    },
+    {
+      "check": "stable advisory IDs unique",
+      "observed": "duplicate advisory identifier count 0",
+      "expected": "Zero duplicate advisory identifier values",
+      "passed": true
+    },
+    {
+      "check": "declared feature columns resolved",
+      "observed": "missing []; empty []; post outcome leak []; station headers ['Regional Board', 'Station_id', 'Station_Agency_id', 'BeachName_id', 'Station_Name', 'Station_Description', 'AgencyStationIdentifier', 'Station_UpperLat', 'Station_UpperLon', 'Station_LowerLat', 'Station_LowerLon', 'SwimSeason', 'OffSeason', 'AsNeededSeason', 'CountyCode', 'CountyName', 'Status', 'UpdateDate', 'Stations Insert Date', 'pointZero', 'Datum', 'Beach_AgencyName', 'Beach_Name', 'Description', 'BeachType', 'Beach Length', 'AttendanceWinter', 'AttendanceSummer', 'NearestCityName', 'WaterBodyName', 'WaterBodyClass', 'AB411Beach', 'USEPAID', 'BeachAccess', 'SwimSeasonLength', 'WaterBodyType', 'WaterShedName', 'Beach_UpperLat', 'Beach_UpperLon', 'Beach_LowerLat', 'Beach_LowerLon', 'Beach_County', 'Beach_User_id', 'Beach_Status', 'CountAsBeach', 'Agency_id', 'Agency_Code', 'Agency_Name', 'Agency_Jurisdiction', 'StreetAddress', 'City', 'Station Contact Person', 'Zip', 'EstMonCost', 'EstCoastlineAdvisoryCost', 'EstTotalCost', 'Station Comments', 'County', 'Agency_User_id', 'Regional Board Number', 'Regional Board Name', '_st_id_key', '_st_name_county_key', '_st_name_only_key', '_county_st', '_agency_st', '_lat_st', '_lon_st']",
+      "expected": "Every declared feature column exists, none is entirely missing, and no removal date, duration or spatial extent field is shipped as a feature",
+      "passed": true
+    },
+    {
+      "check": "station inventory context coverage",
+      "observed": "matched 19061 of 19061",
+      "expected": "At least one station match; unmatched rows retain missing station fields rather than zero",
+      "passed": true
+    },
+    {
+      "check": "county feature coverage",
+      "observed": "known 19061 of 19061",
+      "expected": "At least one resolved county from the advisory record or the station inventory; missing values are the explicit UNKNOWN category",
+      "passed": true
+    },
+    {
+      "check": "monitoring agency coverage",
+      "observed": "known 19061 of 19061",
+      "expected": "At least one resolved monitoring agency from the advisory record or the station inventory; missing values are the explicit UNKNOWN category",
+      "passed": true
+    },
+    {
+      "check": "training-window prior duration coverage",
+      "observed": "known 10001 of 19061; train known 9313; training labels used 9932; latest training removal date 2015-12-30 00:00:00",
+      "expected": "Prior mean duration uses only training records whose recorded removal date is before the scored issue date and before 2016-01-01; missingness is retained where no qualifying training record exists",
+      "passed": true
+    },
+    {
+      "check": "training-only causal rate labels",
+      "observed": "rate label splits ['train']; latest training removal date 2015-12-30 00:00:00; latest removal date minus scored issue date in days -1.0",
+      "expected": "Prior duration rates use training-split records only, and each contributing removal date falls strictly before the scored issue date and before the training window end",
+      "passed": true
+    },
+    {
+      "check": "split boundary embargo",
+      "observed": "dropped 80; remaining in embargo 0",
+      "expected": "Records starting in the seven days before 2016-01-01, 2020-01-01 or 2024-01-01 are dropped; remaining rows fall in half-open windows",
+      "passed": true
+    },
+    {
+      "check": "included start dates in frozen range",
+      "observed": "min 2005-01-01 00:00:00; max 2023-12-21 00:00:00",
+      "expected": "All included issue dates fall from 2005-01-01 through 2023-12-31",
+      "passed": true
+    },
+    {
+      "check": "binary target construction",
+      "observed": "unique target values [0, 1]; positives 6557; rows 19061",
+      "expected": "Target contains only 0 and 1 with no missing values and no record with an unknown removal date is treated as negative",
+      "passed": true
+    },
+    {
+      "check": "output column contract",
+      "observed": "observed columns ['advisory_id', 'advisory_start_date', 'persists_7d', 'advisory_class', 'start_month', 'start_day_of_week', 'county', 'beach_id', 'prior_postings_365d', 'prior_mean_closed_duration_days_365d', 'days_since_prior_posting', 'station_count', 'latitude', 'longitude', 'monitoring_agency']; target header 'persists_7d'; declared features ['advisory_class', 'start_month', 'start_day_of_week', 'county', 'beach_id', 'prior_postings_365d', 'prior_mean_closed_duration_days_365d', 'days_since_prior_posting', 'station_count', 'latitude', 'longitude', 'monitoring_agency']",
+      "expected": "Output columns exactly match the declared identifier, time, target and feature names",
+      "passed": true
+    }
+  ]
+}

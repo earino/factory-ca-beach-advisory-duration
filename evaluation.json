@@ -1,0 +1,103 @@
+{
+  "protocol": "Existing unmodified runner baseline on public validation only; no holdout scoring",
+  "rows": 4350,
+  "metrics": {
+    "full_model": {
+      "auc": 0.8960809939048806,
+      "brier": 0.11963301140244259
+    },
+    "majority_prior": {
+      "auc": 0.5,
+      "brier": 0.24869170914735844
+    },
+    "calendar_identity": {
+      "auc": 0.4835145926947546,
+      "brier": 0.25037123270507866
+    }
+  },
+  "by_year": {
+    "2016": {
+      "rows": 845,
+      "positive_rate": 0.3076923076923077,
+      "metrics": {
+        "full_model": {
+          "auc": 0.8692472057856673,
+          "brier": 0.1175722961380467
+        },
+        "majority_prior": {
+          "auc": 0.5,
+          "brier": 0.21362540682198805
+        },
+        "calendar_identity": {
+          "auc": 0.5268934911242603,
+          "brier": 0.21363878158423605
+        }
+      }
+    },
+    "2017": {
+      "rows": 1103,
+      "positive_rate": 0.4342701722574796,
+      "metrics": {
+        "full_model": {
+          "auc": 0.9389653926449333,
+          "brier": 0.09665068879661759
+        },
+        "majority_prior": {
+          "auc": 0.5,
+          "brier": 0.2685496582537071
+        },
+        "calendar_identity": {
+          "auc": 0.4855785958995771,
+          "brier": 0.27134034687606806
+        }
+      }
+    },
+    "2018": {
+      "rows": 1008,
+      "positive_rate": 0.310515873015873,
+      "metrics": {
+        "full_model": {
+          "auc": 0.8505918587813455,
+          "brier": 0.13231288621620158
+        },
+        "majority_prior": {
+          "auc": 0.5,
+          "brier": 0.21485059901730696
+        },
+        "calendar_identity": {
+          "auc": 0.4671776955432459,
+          "brier": 0.2177642079601521
+        }
+      }
+    },
+    "2019": {
+      "rows": 1394,
+      "positive_rate": 0.45767575322812054,
+      "metrics": {
+        "full_model": {
+          "auc": 0.8948972483455242,
+          "brier": 0.129898070527529
+        },
+        "majority_prior": {
+          "auc": 0.5,
+          "brier": 0.27870573110699076
+        },
+        "calendar_identity": {
+          "auc": 0.48436022789471067,
+          "brier": 0.27962364964151787
+        }
+      }
+    }
+  },
+  "majority_accuracy": 0.6114942528735632,
+  "calendar_identity_unseen_rows": 0,
+  "persistence": "Not applicable; see construction notes",
+  "limitations": [
+    "No uncertainty interval; observed differences do not establish universal headroom"
+  ],
+  "runner_files": {
+    "train.py": "a3c6bcf13735bc85c52129ded68f839090dffdc266ebc3810dc61b2e6ea5e7e8",
+    "validate.py": "b597e7f84fed614e64b4a86fbecbd6ec0145916a24d0d221a796586976418e7b",
+    "validate.sh": "3f06ca48f11c2e05d331b4d8394284925de660c1d4b086d2f8243959e83b7e6d"
+  }
+}

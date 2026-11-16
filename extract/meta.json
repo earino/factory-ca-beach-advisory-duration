@@ -1,0 +1,51 @@
+{
+  "name": "ca-beach-advisory-duration",
+  "description": "When a county health officer issues a new beach water-quality posting, will that posting remain in force for at least seven days?",
+  "target": "persists_7d",
+  "positive_label": 1,
+  "id_columns": [
+    "advisory_id"
+  ],
+  "columns": [
+    "advisory_id",
+    "advisory_start_date",
+    "persists_7d",
+    "advisory_class",
+    "start_month",
+    "start_day_of_week",
+    "county",
+    "beach_id",
+    "prior_postings_365d",
+    "prior_mean_closed_duration_days_365d",
+    "days_since_prior_posting",
+    "station_count",
+    "latitude",
+    "longitude",
+    "monitoring_agency"
+  ],
+  "rows": {
+    "train": 9942,
+    "eval": 4350,
+    "holdout": 4769
+  },
+  "positive_rate": {
+    "train": 0.2830416415208208,
+    "eval": 0.38850574712643676,
+    "holdout": 0.43048857202767876
+  },
+  "split": {
+    "eval": {
+      "end": "2020-01-01T00:00:00.000",
+      "start": "2016-01-01T00:00:00.000"
+    },
+    "holdout": {
+      "end": "2024-01-01T00:00:00.000",
+      "start": "2020-01-01T00:00:00.000"
+    },
+    "train": {
+      "end": "2016-01-01T00:00:00.000",
+      "start": "2005-01-01T00:00:00.000"
+    }
+  },
+  "split_description": "Chronological by advisory start date, no random shuffling: train = 2005-01-01 through 2015-12-31; eval = 2016-01-01 through 2019-12-31; holdout = 2020-01-01 through 2023-12-31. Boundary embargo: any record whose start date falls in the 7 days before a split boundary is dropped, and any record whose end date crosses a boundary is retained only in the earlier split but excluded from feature/label computation for the later split. If the observed earliest year is later than 2005, the train window starts at the first complete calendar year instead, and the boundaries 2016/2020 are unchanged."
+}

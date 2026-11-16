@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "terms_url": "https://publish.data.ca.gov/dataset/beach-water-quality-postings-and-closures",
+  "terms_sha256": "2ce99bd8999f682891a0c282138272069fd9583e030464dc9ad58daeffb23d26",
+  "documentation_url": "https://publish.data.ca.gov/dataset/b9c8ce91-40ff-4ad3-8164-bc17c46afb44/resource/4744ce19-b2e6-48cc-9fe5-95f460bee7e0/download/beach-watch-data-dictionary.pdf",
+  "documentation_sha256": "f761863da61a2766797c071810dccddb62e638aa6aec9c5417c1a83266c3b31a",
+  "quoted_excerpt": "No Restrictions on Public Use",
+  "excerpt_found": true,
+  "excerpt_match": "contiguous",
+  "scope": "Captured publisher bytes and quote presence; semantic applicability reviewed separately"
+}

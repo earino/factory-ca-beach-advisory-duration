@@ -1,0 +1,401 @@
+{
+  "schema": "factory-1",
+  "dataset": "ca-beach-advisory-duration",
+  "version": "v-2cdf2a6e0df3956f",
+  "artifact_version": "bbeefbfb31599f49805ff9f96a3c906953ee1cc565796c1d7faee484fdd91ca5",
+  "assets": {
+    "LICENSE-EVIDENCE.json": {
+      "sha256": "6e513671f4f09bc4d34f819adbd8f7be001ac8bea2f2813713f056f2130cc6a5",
+      "bytes": 692,
+      "asset_name": "LICENSE-EVIDENCE.json"
+    },
+    "LICENSE.md": {
+      "sha256": "69362cec3d69b8f76603a7dafc68fded2326f40ef5d21f2dc734ceae828c9210",
+      "bytes": 1043,
+      "asset_name": "LICENSE.md"
+    },
+    "README.md": {
+      "sha256": "4bab918ed68fb32ff237070c9da36ef16a9f18f50890ea0f1227abf21783d0db",
+      "bytes": 6018,
+      "asset_name": "README.md"
+    },
+    "SOURCES.json": {
+      "sha256": "0fd4cd8725ec9ae490410b0c372442ccec0a4a560d820e762a370ae6fd209856",
+      "bytes": 1465,
+      "asset_name": "SOURCES.json"
+    },
+    "evaluation.json": {
+      "sha256": "9503e8fd8c27fd76f900df843aeac60f4fb169bc8ee4b2001bc9f6d946bdd5a7",
+      "bytes": 2722,
+      "asset_name": "evaluation.json"
+    },
+    "extract/meta.json": {
+      "sha256": "25105f058874dd48410c8f22be6b8d7a69f89503a85c60a27f7b3d2e04dbfee8",
+      "bytes": 1794,
+      "asset_name": "extract__meta.json"
+    },
+    "extract/private/holdout.csv": {
+      "sha256": "7757772e6673a3d1e5780bd05d0264366c9c521a64dba53f86f4afa9b1b23091",
+      "bytes": 850852,
+      "asset_name": "extract__private__holdout.csv"
+    },
+    "extract/public/eval.csv": {
+      "sha256": "8e045ba24a4b79f43efbae9a30e3a1374b90fcff97735a72de144c28a3f38b3d",
+      "bytes": 779839,
+      "asset_name": "extract__public__eval.csv"
+    },
+    "extract/public/train.csv": {
+      "sha256": "36bac98503700e0b28c990e6efcd36ef0f761e6a4607501ac9eda6cfd143f6aa",
+      "bytes": 1857043,
+      "asset_name": "extract__public__train.csv"
+    },
+    "extract/quality.json": {
+      "sha256": "605abbe839f768089dd2afdbeda99ced0217ddee62c8da037b442ea9a17fd7bb",
+      "bytes": 22959,
+      "asset_name": "extract__quality.json"
+    },
+    "get_dataset.py": {
+      "sha256": "fad89222d50f9d9709225c34909be74c591df409c08b8b5951eba9d3cadfdd48",
+      "bytes": 3680,
+      "asset_name": "get_dataset.py"
+    },
+    "qualification.json": {
+      "sha256": "a760824c8e6a74063194d821c5f3fd3f7a9d57a281a44f431d33cc51caef37d0",
+      "bytes": 17499,
+      "asset_name": "qualification.json"
+    },
+    "reproduction/LICENSE-CC0-1.0.txt": {
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+      "bytes": 7048,
+      "asset_name": "reproduction__LICENSE-CC0-1.0.txt"
+    },
+    "reproduction/LICENSE-MIT.txt": {
+      "sha256": "56b932ff064e5da113ae10175c8546325f64f26e1ece71683ffcbf8b2304fe1c",
+      "bytes": 1124,
+      "asset_name": "reproduction__LICENSE-MIT.txt"
+    },
+    "reproduction/artifact_scrub.py": {
+      "sha256": "8c663253e691a7b8751f9c853b40a3752a833360caafb1ea8e8f534e64af4b68",
+      "bytes": 11369,
+      "asset_name": "reproduction__artifact_scrub.py"
+    },
+    "reproduction/build.py": {
+      "sha256": "ec45f566608525056cd677173bc96f2869d4ee4ff0b2a99818e8976f8aae032a",
+      "bytes": 40774,
+      "asset_name": "reproduction__build.py"
+    },
+    "reproduction/construction.json": {
+      "sha256": "d4a8ce1b8550892328e62fd59ff34c26516f3bef4c336555963fcaebe007f16c",
+      "bytes": 26026,
+      "asset_name": "reproduction__construction.json"
+    },
+    "reproduction/dataset_package.py": {
+      "sha256": "c2364defe58dcc99322be59a1bb04894ce00e823ce37afeb37bc31012f744327",
+      "bytes": 7927,
+      "asset_name": "reproduction__dataset_package.py"
+    },
+    "reproduction/dataset_run.py": {
+      "sha256": "8085fae14d6e93b852e692e18c1ef72113a3601f48f78901b6d1ae6db278de57",
+      "bytes": 12381,
+      "asset_name": "reproduction__dataset_run.py"
+    },
+    "reproduction/get_dataset.py": {
+      "sha256": "fad89222d50f9d9709225c34909be74c591df409c08b8b5951eba9d3cadfdd48",
+      "bytes": 3680,
+      "asset_name": "reproduction__get_dataset.py"
+    },
+    "reproduction/leakage_battery.py": {
+      "sha256": "adbf7ee0aca0012b78cc1f1e4aeb968a23717cae30f66a02e080215e75f830e3",
+      "bytes": 17379,
+      "asset_name": "reproduction__leakage_battery.py"
+    },
+    "reproduction/provenance.json": {
+      "sha256": "11a9c4f355a6345b1a64b1bb34afd669daa68a62b53b6635c45f9861295a81a7",
+      "bytes": 573,
+      "asset_name": "reproduction__provenance.json"
+    },
+    "reproduction/qualify_dataset.py": {
+      "sha256": "bff6d43d0904182e2612c32bab702e41addbf389904a236c209e78be39e37a6b",
+      "bytes": 66067,
+      "asset_name": "reproduction__qualify_dataset.py"
+    },
+    "reproduction/recovery_recipes.py": {
+      "sha256": "f64c542fcda232169c95ace17421b45275194b934938c0ea4c9b68e6f844ad0e",
+      "bytes": 17609,
+      "asset_name": "reproduction__recovery_recipes.py"
+    },
+    "reproduction/requirements.txt": {
+      "sha256": "5c72f3268174d20364624f76680e189c408a05dba2e7b8cfe12d077b3865e7f0",
+      "bytes": 160,
+      "asset_name": "reproduction__requirements.txt"
+    },
+    "reproduction/source.json": {
+      "sha256": "459593da19d1d3adb33a7eb59faa046d5bb4aac7f386f1a36b948d27f2371686",
+      "bytes": 19529,
+      "asset_name": "reproduction__source.json"
+    },
+    "reproduction/source_io.py": {
+      "sha256": "0c60eed4968cd342148efbaac7e4fa98f00708d8e6c14c0929928687b9af1ea3",
+      "bytes": 5607,
+      "asset_name": "reproduction__source_io.py"
+    },
+    "reproduction/train.py": {
+      "sha256": "a3c6bcf13735bc85c52129ded68f839090dffdc266ebc3810dc61b2e6ea5e7e8",
+      "bytes": 2500,
+      "asset_name": "reproduction__train.py"
+    },
+    "reproduction/validate.py": {
+      "sha256": "b597e7f84fed614e64b4a86fbecbd6ec0145916a24d0d221a796586976418e7b",
+      "bytes": 1277,
+      "asset_name": "reproduction__validate.py"
+    },
+    "reproduction/validate.sh": {
+      "sha256": "3f06ca48f11c2e05d331b4d8394284925de660c1d4b086d2f8243959e83b7e6d",
+      "bytes": 482,
+      "asset_name": "reproduction__validate.sh"
+    },
+    "source-checks.json": {
+      "sha256": "e1299c2a1c979d45da459d76dca47741a12db8daa438a4b5032cc9e9b30b3d63",
+      "bytes": 14175,
+      "asset_name": "source-checks.json"
+    },
+    "source-snapshot.tar.gz": {
+      "sha256": "5746d68b4443c15ed854e88b3c127b47fc7f52fa9c156a256a55fbe9bd6fcda6",
+      "bytes": 2809978,
+      "asset_name": "source-snapshot.tar.gz"
+    },
+    "verify_dataset.py": {
+      "sha256": "f4a4bb7f565cdbd075c520621f881876b491eaed91a5e6e70afb31e4753f9834",
+      "bytes": 1276,
+      "asset_name": "verify_dataset.py"
+    }
+  },
+  "source": {
+    "attribution": "Contains information from the California State Water Resources Control Board, \"Beach Advisories (Postings and Closures) and Beach Water Quality Monitoring\" (data.ca.gov), made available under the Open Data Commons Attribution License (ODC-By) v1.0.",
+    "citation": "",
+    "documentation_url": "https://publish.data.ca.gov/dataset/b9c8ce91-40ff-4ad3-8164-bc17c46afb44/resource/4744ce19-b2e6-48cc-9fe5-95f460bee7e0/download/beach-watch-data-dictionary.pdf",
+    "license": "Open Data Commons Attribution License (ODC-By) v1.0",
+    "publisher": "California State Water Resources Control Board (Beach Monitoring Program, Division of Water Quality)",
+    "redistribution": true,
+    "terms_excerpt": "No Restrictions on Public Use",
+    "terms_url": "https://publish.data.ca.gov/dataset/beach-water-quality-postings-and-closures",
+    "urls": [
+      "https://publish.data.ca.gov/dataset/b9c8ce91-40ff-4ad3-8164-bc17c46afb44/resource/d5cd6a23-829c-426d-a63e-689a55a3db9c/download/beach-advisories.csv"
+    ]
+  },
+  "task": {
+    "decision_user": "County environmental-health / beach-program staff and the state beach monitoring program deciding, on the day a posting is issued, whether to schedule repeat sampling, extra signage and staffing, and extended public messaging.",
+    "features": [
+      {
+        "availability": "AdvisoryType on the current-snapshot advisory record; population restricted to the posting class.",
+        "evidence_url": "https://publish.data.ca.gov/dataset/beach-water-quality-postings-and-closures",
+        "meaning": "Advisory class; the population is restricted to the posting class, so this column is constant posting after filtering. It records the declared population control. AdvisoryType in the observed publisher data carries posting, closure, rain and null values; a permanent posting is not a separable code, so it remains inside the posting class and is recorded as a limitation.",
+        "name": "advisory_class"
+      },
+      {
+        "availability": "Derived from the DateofAdvisory issue date in the current snapshot; historical availability assumed.",
+        "evidence_url": "https://publish.data.ca.gov/dataset/beach-water-quality-postings-and-closures",
+        "meaning": "Calendar month of the advisory issue date, known at day 0 and capturing seasonality in dry-weather runoff and sampling.",
+        "name": "start_month"
+      },
+      {
+        "availability": "Derived from the DateofAdvisory issue date in the current snapshot; historical availability assumed.",
+        "evidence_url": "https://publish.data.ca.gov/dataset/beach-water-quality-postings-and-closures",
+        "meaning": "Day of week of the advisory issue date, known at day 0 and capturing weekday sampling and staffing patterns.",
+        "name": "start_day_of_week"
+      },
+      {
+        "availability": "Advisory county with station-inventory fallback in the current snapshot; historical availability assumed.",
+        "evidence_url": "https://publish.data.ca.gov/dataset/b9c8ce91-40ff-4ad3-8164-bc17c46afb44/resource/98e628ff-d012-4982-ad32-b9f9ad8ab524/download/beach-monitoring-stations.csv",
+        "meaning": "County or jurisdiction of the advisory or joined station, proxying local re-sampling protocol and signage practice. Missing values are the explicit UNKNOWN category, not zero.",
+        "name": "county"
+      },
+      {
+        "availability": "Constructed from source beach identity fields in the current snapshot; historical availability assumed.",
+        "evidence_url": "https://publish.data.ca.gov/dataset/beach-water-quality-postings-and-closures",
+        "meaning": "Stable hashed beach key built from the source beach identifier or beach name plus county; it is not the advisory row identifier.",
+        "name": "beach_id"
+      },
+      {
+        "availability": "Constructed from earlier issue dates in the deduplicated posting history in the current snapshot; historical availability assumed.",
+        "evidence_url": "https://publish.data.ca.gov/dataset/beach-water-quality-postings-and-closures",
+        "meaning": "Count of earlier posting issue dates for the same beach in the trailing 365 days, strictly before the current issue date, computed on the deduplicated history; known at day 0 and not a label-derived rate.",
+        "name": "prior_postings_365d"
+      },
+      {
+        "availability": "Constructed causally from training-split records whose recorded removal date is strictly before the scored issue date and before 2016-01-01 in the current snapshot; historical availability assumed.",
+        "evidence_url": "https://publish.data.ca.gov/dataset/beach-water-quality-postings-and-closures",
+        "meaning": "Mean recorded duration of earlier same-beach training postings whose recorded removal date is strictly before the scored issue date and whose issue date is in the trailing 365 days. Only training-split labels removed before 2016-01-01 are used, so eval and holdout labels never enter. Missingness is retained when no qualifying training record exists.",
+        "name": "prior_mean_closed_duration_days_365d"
+      },
+      {
+        "availability": "Constructed from earlier issue dates in the current snapshot; historical availability assumed.",
+        "evidence_url": "https://publish.data.ca.gov/dataset/beach-water-quality-postings-and-closures",
+        "meaning": "Days since the most recent earlier posting issue date for the same beach, or missing if none; known at day 0.",
+        "name": "days_since_prior_posting"
+      },
+      {
+        "availability": "Joined from the station inventory in the current snapshot; historical availability assumed.",
+        "evidence_url": "https://publish.data.ca.gov/dataset/b9c8ce91-40ff-4ad3-8164-bc17c46afb44/resource/98e628ff-d012-4982-ad32-b9f9ad8ab524/download/beach-monitoring-stations.csv",
+        "meaning": "Number of station-inventory rows joined to the beach; missing when no station match, not zero.",
+        "name": "station_count"
+      },
+      {
+        "availability": "Joined from the station inventory or advisory record in the current snapshot; historical availability assumed.",
+        "evidence_url": "https://publish.data.ca.gov/dataset/b9c8ce91-40ff-4ad3-8164-bc17c46afb44/resource/98e628ff-d012-4982-ad32-b9f9ad8ab524/download/beach-monitoring-stations.csv",
+        "meaning": "Mean station latitude for the beach, falling back to the advisory coordinate; missing when unavailable.",
+        "name": "latitude"
+      },
+      {
+        "availability": "Joined from the station inventory or advisory record in the current snapshot; historical availability assumed.",
+        "evidence_url": "https://publish.data.ca.gov/dataset/b9c8ce91-40ff-4ad3-8164-bc17c46afb44/resource/98e628ff-d012-4982-ad32-b9f9ad8ab524/download/beach-monitoring-stations.csv",
+        "meaning": "Mean station longitude for the beach, falling back to the advisory coordinate; missing when unavailable.",
+        "name": "longitude"
+      },
+      {
+        "availability": "Joined from the station inventory or advisory record in the current snapshot; historical availability assumed.",
+        "evidence_url": "https://publish.data.ca.gov/dataset/b9c8ce91-40ff-4ad3-8164-bc17c46afb44/resource/98e628ff-d012-4982-ad32-b9f9ad8ab524/download/beach-monitoring-stations.csv",
+        "meaning": "Station or advisory monitoring agency; UNKNOWN when missing, not zero.",
+        "name": "monitoring_agency"
+      }
+    ],
+    "outcome_horizon": "7 days from advisory start.",
+    "population": "Advisory records in the beach-advisories CSV whose advisory class is the posting class; closure and rain advisory records are excluded and counted, and a permanent-posting value is not separable in the observed AdvisoryType data so permanent postings that the publisher folds into the posting class remain included and are recorded as a limitation. The issue date comes from DateofAdvisory and must fall from 2005-01-01 through 2023-12-31; the removal date comes from DateOpened and must be present and on or after the issue date so the whole-day duration is defined. Records sharing a beach, issue date and class are collapsed to the earliest source row so repeated episode rows do not repeat the label. Records starting in the seven days before 2016-01-01, 2020-01-01 or 2024-01-01 are dropped by the boundary embargo. Records with a missing or negative duration are excluded because the label cannot be computed; they are never treated as negative.",
+    "prediction_time": "The advisory issue date, day 0, taken from DateofAdvisory. Only the advisory class, issue date, beach identity, county, station inventory and earlier posting issue dates are used. For duration rates only earlier training-split records whose recorded removal date closed before this row and before 2016-01-01 are used. DateOpened, DURATION CALCULATED, the spatial extent fields and the derived duration are withheld.",
+    "question": "When a county health officer issues a new beach water-quality posting, will that posting remain in force for at least seven days?",
+    "simple_references": "Majority-class rate of the seven-day label; county-level historical posting persistence rate computed from training labels only for eval and holdout; beach-level historical mean duration computed from training labels whose removal dates closed before each scored row; calendar-only month and day-of-week control. The county and beach references are the meaningful baselines.",
+    "split_policy": "Chronological by advisory start date, no random shuffling: train = 2005-01-01 through 2015-12-31; eval = 2016-01-01 through 2019-12-31; holdout = 2020-01-01 through 2023-12-31. Boundary embargo: any record whose start date falls in the 7 days before a split boundary is dropped, and any record whose end date crosses a boundary is retained only in the earlier split but excluded from feature/label computation for the later split. If the observed earliest year is later than 2005, the train window starts at the first complete calendar year instead, and the boundaries 2016/2020 are unchanged.",
+    "target": "y = 1 if the advisory record is a posting (the bacteria-standard advisory class, not a sewage closure, not a pre-emptive rain advisory, not a permanent posting) and its recorded end date is at least 7 calendar days after its start date; y = 0 if it ends within 7 days. Records with no end date (still open at extraction) or with end date before start date are excluded.",
+    "usefulness": "The seven-day persistence label is not a stored field; the recorded removal date and the publisher duration column are withheld and are unknown when the posting is issued. Persistence concentrates repeat sampling, signage, staffing and hotline burden. Beach, county and calendar base rates are strong but imperfect, so a model that beats them under heterogeneous county reporting is informative; the task is retrospective because the current extract contains later edits."
+  },
+  "rows": {
+    "train": 9942,
+    "eval": 4350,
+    "holdout": 4769
+  },
+  "evaluation_contract": {
+    "access": "isolated_rows",
+    "cross_row_audit": {
+      "auxiliary_files_review": "No auxiliary files; only public/train.csv, public/eval.csv and private/holdout.csv are written.",
+      "probes": [],
+      "rationale": "Prior posting counts use only earlier issue dates. The prior duration rate uses only training-split records whose recorded removal date is strictly before the scored issue date and before 2016-01-01, so eval and holdout labels never enter, including matured earlier holdout labels that would otherwise expose a later private target."
+    },
+    "feature_evidence": {
+      "advisory_class": {
+        "availability": "AdvisoryType on the current-snapshot advisory record; population restricted to the posting class.",
+        "source": "https://publish.data.ca.gov/dataset/beach-water-quality-postings-and-closures",
+        "status": "assumed"
+      },
+      "advisory_id": {
+        "availability": "Constructed stable advisory identifier from beach key, issue date, duration and class in the current snapshot; historical availability assumed.",
+        "source": "https://publish.data.ca.gov/dataset/beach-water-quality-postings-and-closures",
+        "status": "assumed"
+      },
+      "advisory_start_date": {
+        "availability": "DateofAdvisory issue date on the current-snapshot advisory record; historical availability assumed.",
+        "source": "https://publish.data.ca.gov/dataset/beach-water-quality-postings-and-closures",
+        "status": "assumed"
+      },
+      "beach_id": {
+        "availability": "Constructed from source beach identity fields in the current snapshot; historical availability assumed.",
+        "source": "https://publish.data.ca.gov/dataset/beach-water-quality-postings-and-closures",
+        "status": "assumed"
+      },
+      "county": {
+        "availability": "Advisory county with station-inventory fallback in the current snapshot; historical availability assumed.",
+        "source": "https://publish.data.ca.gov/dataset/b9c8ce91-40ff-4ad3-8164-bc17c46afb44/resource/98e628ff-d012-4982-ad32-b9f9ad8ab524/download/beach-monitoring-stations.csv",
+        "status": "assumed"
+      },
+      "days_since_prior_posting": {
+        "availability": "Constructed from earlier issue dates in the current snapshot; historical availability assumed.",
+        "source": "https://publish.data.ca.gov/dataset/beach-water-quality-postings-and-closures",
+        "status": "assumed"
+      },
+      "latitude": {
+        "availability": "Joined from the station inventory or advisory record in the current snapshot; historical availability assumed.",
+        "source": "https://publish.data.ca.gov/dataset/b9c8ce91-40ff-4ad3-8164-bc17c46afb44/resource/98e628ff-d012-4982-ad32-b9f9ad8ab524/download/beach-monitoring-stations.csv",
+        "status": "assumed"
+      },
+      "longitude": {
+        "availability": "Joined from the station inventory or advisory record in the current snapshot; historical availability assumed.",
+        "source": "https://publish.data.ca.gov/dataset/b9c8ce91-40ff-4ad3-8164-bc17c46afb44/resource/98e628ff-d012-4982-ad32-b9f9ad8ab524/download/beach-monitoring-stations.csv",
+        "status": "assumed"
+      },
+      "monitoring_agency": {
+        "availability": "Joined from the station inventory or advisory record in the current snapshot; historical availability assumed.",
+        "source": "https://publish.data.ca.gov/dataset/b9c8ce91-40ff-4ad3-8164-bc17c46afb44/resource/98e628ff-d012-4982-ad32-b9f9ad8ab524/download/beach-monitoring-stations.csv",
+        "status": "assumed"
+      },
+      "prior_mean_closed_duration_days_365d": {
+        "availability": "Constructed causally from training-split records whose recorded removal date is strictly before the scored issue date and before 2016-01-01 in the current snapshot; historical availability assumed.",
+        "source": "https://publish.data.ca.gov/dataset/beach-water-quality-postings-and-closures",
+        "status": "assumed"
+      },
+      "prior_postings_365d": {
+        "availability": "Constructed from earlier issue dates in the deduplicated posting history in the current snapshot; historical availability assumed.",
+        "source": "https://publish.data.ca.gov/dataset/beach-water-quality-postings-and-closures",
+        "status": "assumed"
+      },
+      "start_day_of_week": {
+        "availability": "Derived from the DateofAdvisory issue date in the current snapshot; historical availability assumed.",
+        "source": "https://publish.data.ca.gov/dataset/beach-water-quality-postings-and-closures",
+        "status": "assumed"
+      },
+      "start_month": {
+        "availability": "Derived from the DateofAdvisory issue date in the current snapshot; historical availability assumed.",
+        "source": "https://publish.data.ca.gov/dataset/beach-water-quality-postings-and-closures",
+        "status": "assumed"
+      },
+      "station_count": {
+        "availability": "Joined from the station inventory in the current snapshot; historical availability assumed.",
+        "source": "https://publish.data.ca.gov/dataset/b9c8ce91-40ff-4ad3-8164-bc17c46afb44/resource/98e628ff-d012-4982-ad32-b9f9ad8ab524/download/beach-monitoring-stations.csv",
+        "status": "assumed"
+      }
+    },
+    "limitations": [
+      "Current-vintage retrospective file: removal dates reflect later edits and the extract was refreshed in 2026, so this shows what a model can learn from the register, not that the seven-day outcome was known to an operator at issuance.",
+      "No full-row availability ledger was observed; exact header spellings, date fill rates and historical field availability remain assumed and are confirmed or refuted by the builder checks at run time.",
+      "AdvisoryType does not expose a separable permanent-posting code in the observed publisher data, so permanent postings folded into the posting class cannot be removed by class alone; the population wording was corrected rather than pretending an unobservable exclusion.",
+      "Repeated rows sharing a beach, issue date and class are removed deterministically by keeping the earliest source row; where a duplicate group carries differing removal dates the retained label is one of several recorded outcomes.",
+      "Station matching uses an identifier tier, a beach-name-plus-county tier and a beach-name-only tier, so same-named beaches in different jurisdictions can over-merge and inflate station counts.",
+      "Duration is a whole-calendar-day difference, so a posting whose removal date equals the issue date plus exactly seven days counts as persistent; sub-day timing is not representable.",
+      "No rainfall, tide, oceanographic or sampling-result covariates are used; weather is a major driver of posting persistence, so the model is limited to register-available fields.",
+      "Reporting is by county health officers with heterogeneous protocols, so county and beach effects partly encode administrative practice rather than environmental persistence.",
+      "The seven-day threshold is a policy choice, not a natural break; sensitivity to three and fourteen days is not evaluated here.",
+      "Beaches outside participating jurisdictions and episodes never entered into the state register are absent, so the population is the reporting frame, not all California beaches."
+    ],
+    "selection": {
+      "evidence": "Row issue date (DateofAdvisory), pre-issuance beach identity, county, station inventory and earlier posting issue dates; the recorded removal date (DateOpened), the publisher duration column and the spatial extent fields are withheld and are never features.",
+      "kind": "prediction_time"
+    },
+    "training_label_timing": "unverified",
+    "use": "retrospective_research",
+    "vintage": {
+      "evidence": "Current publisher snapshot; historical revision state and exact refresh date are not verified in this write-only construction.",
+      "kind": "current_snapshot"
+    }
+  },
+  "limitations": [
+    "Current-vintage retrospective file: end dates reflect later edits and the extract was refreshed in October 2026, so it demonstrates what a model can learn from this register, not that the 7-day outcome was available to an operator in real time.",
+    "Exact column names and value codings were not verified against the dictionary PDF within this selection pass; the build step must confirm them before the split is frozen, and the frozen boundaries assume the file reaches back to at least the 2005-2015 train window.",
+    "No rainfall, tide, oceanographic or sampling-result covariates are used; weather is a major driver of posting persistence, so the model is deliberately limited to register-available fields.",
+    "Reporting is by county health officers with heterogeneous protocols, so county and beach effects partly encode administrative practice rather than environmental persistence.",
+    "The 7-day threshold is a policy choice, not a natural break; results should be reported against at least one alternative threshold (for example 3 and 14 days) to show sensitivity.",
+    "Beaches outside participating jurisdictions and advisory episodes never entered into the state register are absent, so the population is the reporting frame, not all California beaches.",
+    "Underlying episodes are submitted by county agencies; the ODC-By grant is the publisher's over this dataset and does not relicense any upstream county record on other terms, and attribution must travel with any redistribution. Our own contribution may be released CC0, but that does not alter upstream rights.",
+    "Current-vintage retrospective file: removal dates reflect later edits and the extract was refreshed in 2026, so this shows what a model can learn from the register, not that the seven-day outcome was known to an operator at issuance.",
+    "No full-row availability ledger was observed; exact header spellings, date fill rates and historical field availability remain assumed and are confirmed or refuted by the builder checks at run time.",
+    "AdvisoryType does not expose a separable permanent-posting code in the observed publisher data, so permanent postings folded into the posting class cannot be removed by class alone; the population wording was corrected rather than pretending an unobservable exclusion.",
+    "Repeated rows sharing a beach, issue date and class are removed deterministically by keeping the earliest source row; where a duplicate group carries differing removal dates the retained label is one of several recorded outcomes.",
+    "Station matching uses an identifier tier, a beach-name-plus-county tier and a beach-name-only tier, so same-named beaches in different jurisdictions can over-merge and inflate station counts.",
+    "Duration is a whole-calendar-day difference, so a posting whose removal date equals the issue date plus exactly seven days counts as persistent; sub-day timing is not representable.",
+    "No rainfall, tide, oceanographic or sampling-result covariates are used; weather is a major driver of posting persistence, so the model is limited to register-available fields.",
+    "The seven-day threshold is a policy choice, not a natural break; sensitivity to three and fourteen days is not evaluated here.",
+    "Beaches outside participating jurisdictions and episodes never entered into the state register are absent, so the population is the reporting frame, not all California beaches.",
+    "No uncertainty interval; observed differences do not establish universal headroom"
+  ],
+  "qualification": {
+    "gate_version": "1.6.1",
+    "ok": true
+  }
+}
