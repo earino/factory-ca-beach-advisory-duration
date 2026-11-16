@@ -15,6 +15,14 @@ configs:
     path: extract/private/holdout.csv
 ---
 
+<!-- dataset-factory:links -->
+**Dataset Factory · v-2cdf2a6e0df3956f**
+
+[Dataset website](https://earino.github.io/factory-ca-beach-advisory-duration/versions/v-2cdf2a6e0df3956f/) · [GitHub release](https://github.com/earino/factory-ca-beach-advisory-duration/releases/tag/v-2cdf2a6e0df3956f) · [Hugging Face](https://huggingface.co/datasets/earino/factory-ca-beach-advisory-duration/tree/v-2cdf2a6e0df3956f) · [Catalogue](https://earino.github.io/dataset-factory-site/)
+
+Artifact: bbeefbfb31599f49805ff9f96a3c906953ee1cc565796c1d7faee484fdd91ca5
+<!-- /dataset-factory:links -->
+
 # Persistence of California beach water-quality postings: will a new posting still be in effect seven days later?
 
 When a county health officer issues a new beach water-quality posting, will that posting remain in force for at least seven days?
